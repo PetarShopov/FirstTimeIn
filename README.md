@@ -1,2 +1,2 @@
 # FirstTimeIn
-Travel Blog - (React / Node.js / Express.js / MongoDB / ReduxApp)
+Travel Blog - (Angular / Firebase)

@@ -1,0 +1,12 @@
+<h3>Firebase Test</h3>
+<button mat-button (click)="addPost()">Add Post</button>
+<br />
+<button (click)="getPosts()">Get Posts</button>
+<br />
+<tbody>
+  <tr *ngFor="let post of posts">
+    <button (click)="updatePost(post.payload.doc.id)">{{ post.payload.doc.data().test }}</button>
+    <button (click)="deletePost(post.payload.doc.id)">X</button>
+  </tr>
+</tbody>
+<img width="100" src="https://firebasestorage.googleapis.com/v0/b/first-time-in.appspot.com/o/images%2Flion-conservators-center.jpg?alt=media&token=e683cbb8-8bc5-4106-8449-c1f1613b799c">
