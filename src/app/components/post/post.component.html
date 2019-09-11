@@ -5,8 +5,17 @@
 <br />
 <tbody>
   <tr *ngFor="let post of posts">
-    <button (click)="updatePost(post.payload.doc.id)">{{ post.payload.doc.data().test }}</button>
-    <button (click)="deletePost(post.payload.doc.id)">X</button>
+    <button (click)="updatePost(post.id)">{{ post.text }}</button>
+    <button (click)="deletePost(post.id)">X</button>
   </tr>
 </tbody>
-<img width="100" src="https://firebasestorage.googleapis.com/v0/b/first-time-in.appspot.com/o/images%2Flion-conservators-center.jpg?alt=media&token=e683cbb8-8bc5-4106-8449-c1f1613b799c">
+<mat-grid-list cols="4" rowHeight="100px" [ngStyle]="{margin:'0px 100px'}">
+  <mat-grid-tile *ngFor="let post of posts" [colspan]="post.cols" [rowspan]="post.rows" [style.background]="post.color" [ngStyle]="{border:'1px solid grey'}">
+    <div>
+      <h3 [ngStyle]="{textAlign: 'center'}">{{post.text}}</h3>
+      <div>
+        <img class="postImage" [src]="post.image" [ngStyle]="{width:'400px'}">
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

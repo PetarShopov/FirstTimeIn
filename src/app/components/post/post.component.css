@@ -1,0 +1,8 @@
+.postImage:hover {
+    transform: scale(1.05);
+    box-shadow: rgba(0,0,0,0.40) 0 16px 96px;
+    /* transform: .288s cubic-bezier(0.64, 0.57, 0.67, 1.53); */
+}
+.postImage {
+    transition: transform 0.5s;
+}
