@@ -1,16 +1,21 @@
 <div [ngStyle]="{paddingTop: '60px'}">
-	<button mat-button (click)="addPost()">Add Post</button>
 	<button mat-button (click)="getPosts()">Get Posts</button>
+	<button mat-button (click)="getImages()">Get Images</button>
 	<br />
+	<label for="file">File:</label>
+	<input type="file" (change)="upload($event)" accept=".png,.jpg" />
+	<br/>
 	<div [ngStyle]="{display:'flex', flexWrap: 'wrap'}">
 		<div *ngFor="let post of posts"
-			[ngStyle]="{width:'300px', marginLeft: '50px', display: 'flex', alignItems: 'center', flexDirection: 'column'}">
+			[ngStyle]="{width:'300px', marginLeft: '50px', display: 'flex', alignItems: 'center', flexDirection: 'column'}"
+			(click)="showPost(post.id)">
 			<h3 [ngStyle]="{color: 'grey', width: '100%', padding: '0px 0px 5px 10px', borderBottom: '3px solid grey'}">
 				Europe</h3>
 			<div>
 				<img class="postImage" [src]="post.image" [ngStyle]="{width:'300px'}">
 			</div>
-			<h3 [ngStyle]="{textAlign: 'center'}">{{post.text}}</h3>
+			<h3 [ngStyle]="{textAlign: 'center'}">{{post.shortText}}</h3>
+			<button (click)="deletePost($event, post.id)">Delete</button>
 		</div>
 	</div>
 </div>

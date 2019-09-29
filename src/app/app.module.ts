@@ -19,14 +19,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+
 import { HomeComponent } from './components/home/home.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    AddPostComponent,
+    EscapeHtmlPipe,
   ],
   imports: [
     BrowserModule,
