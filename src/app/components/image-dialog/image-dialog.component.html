@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Images</h1>
+<div mat-dialog-content>
+    <img *ngFor="let image of images" [src]="image" [ngStyle]="{width:'200px'}" (click)="onClick(image)">
+</div>
+<div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Close</button>
+        <button mat-button (click)="getImages()">Get Images</button>
+</div>

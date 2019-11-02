@@ -39,10 +39,6 @@ export class HomeComponent implements OnInit {
 		this.router.navigate(['/posts/', id]);
 	}
 
-	upload(event) {
-		this.firebaseService.uploadImage(event);
-	}
-
 	getImages() {
 		this.firebaseService.getImages().then((res) => {
 			this.images = res.items.map((i) => { return i.location });

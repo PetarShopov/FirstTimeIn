@@ -1,10 +1,4 @@
 <div [ngStyle]="{paddingTop: '60px'}">
-	<button mat-button (click)="getPosts()">Get Posts</button>
-	<button mat-button (click)="getImages()">Get Images</button>
-	<br />
-	<label for="file">File:</label>
-	<input type="file" (change)="upload($event)" accept=".png,.jpg" />
-	<br/>
 	<div [ngStyle]="{display:'flex', flexWrap: 'wrap'}">
 		<div *ngFor="let post of posts"
 			[ngStyle]="{width:'300px', marginLeft: '50px', display: 'flex', alignItems: 'center', flexDirection: 'column'}"

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { RoutesModule } from './routes.module';
+import { FormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -19,10 +20,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import {
+  MatFormFieldModule,
+} from '@angular/material';
 
 import { HomeComponent } from './components/home/home.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { ImageDialog } from './components/image-dialog/image-dialog.component';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +39,8 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
     HomeComponent,
     AddPostComponent,
     EscapeHtmlPipe,
+    ImageDialog,
+    UploadImageComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,9 +49,15 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     RoutesModule,
+    FormsModule,
     MatButtonModule,
     MatGridListModule,
     MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+  ],
+  entryComponents: [
+    ImageDialog
   ],
   providers: [
     AngularFirestore,
