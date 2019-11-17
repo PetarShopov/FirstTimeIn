@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-	posts: any = [
-		{ id: '', text: '', cols: 2, rows: 1, color: 'white', image: '' },
-	];
+	posts;
 	images: Array<object>
 
 	constructor(private firebaseService: FirebaseService, private router: Router) { }
@@ -22,7 +20,8 @@ export class HomeComponent implements OnInit {
 	getPosts() {
 		this.firebaseService.getPosts().subscribe(posts => {
 			this.posts = posts.map(
-				post => ({ ...post.payload.doc.data(), id: post.payload.doc.id }))
+				post => ({ ...post.payload.doc.data(), id: post.payload.doc.id })
+			);
 		});
 	}
 

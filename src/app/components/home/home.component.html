@@ -1,15 +1,14 @@
-<div [ngStyle]="{paddingTop: '60px'}">
-	<div [ngStyle]="{display:'flex', flexWrap: 'wrap'}">
-		<div *ngFor="let post of posts"
-			[ngStyle]="{width:'300px', marginLeft: '50px', display: 'flex', alignItems: 'center', flexDirection: 'column'}"
-			(click)="showPost(post.id)">
-			<h3 [ngStyle]="{color: 'grey', width: '100%', padding: '0px 0px 5px 10px', borderBottom: '3px solid grey'}">
-				Europe</h3>
-			<div>
-				<img class="postImage" [src]="post.image" [ngStyle]="{width:'300px'}">
+<div [ngStyle]="{paddingTop: '80px', backgroundColor: '#FAFAFA'}">
+	<div [ngStyle]="{display:'flex', flexWrap: 'wrap', margin: '0px 150px'}">
+		<div *ngFor="let post of posts" class="post">
+			<div (click)="showPost(post.id)">
+				<img class="postImage" [src]="post.image"
+				[ngStyle]="{width:'100%', height: '250px', objectFit: 'cover'}">
 			</div>
-			<h3 [ngStyle]="{textAlign: 'center'}">{{post.shortText}}</h3>
-			<button (click)="deletePost($event, post.id)">Delete</button>
+			<div [ngStyle]="{color: 'orange', width: '100%', padding: '15px 17px 0px', fontSize: '12px', fontWeight: '600'}">Maya Dekova, 16/10/19</div>
+			<div [ngStyle]="{width: '100%',padding: '0px 15px 0px 15px', fontSize: '25px', fontWeight: '500'}">{{post.shortText}}</div>
+			<!-- <button (click)="deletePost($event, post.id)">Delete</button> -->
+			<div class="likeButton">LIKE</div>
 		</div>
 	</div>
 </div>

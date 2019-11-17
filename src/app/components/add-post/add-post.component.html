@@ -1,3 +1,13 @@
-<div [ngStyle]="{paddingTop: '60px', marginLeft: '20%', marginRight: '20%'}">
-    <div id="summernote"></div>
+<div class='addPostWrapper'>
+    <div class='addPostForm'>
+        <div class="title">New Post</div>
+        <img [src]="mainImage" class='addPostImage' alt="No Image" (click)="updateMainImage()">
+        <input class="addPostTitle" type="text" required [(ngModel)]="title" name="title">
+        <br>
+        <div (click)="toggleSummernote()">Show content</div>
+        <div [ngStyle]="{'display': showSummernote ? '' : 'none'}" class='summernoteWrapper'>
+            <div id="summernote"></div>
+        </div>
+        <button class="addPostSave" mat-button (click)="addPost()">Save</button>
+    </div>
 </div>

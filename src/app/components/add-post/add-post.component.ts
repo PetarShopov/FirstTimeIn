@@ -3,6 +3,7 @@ import { FirebaseService } from "../../services/firebase.service";
 declare var $: any;
 import { MatDialog } from '@angular/material/dialog';
 import { ImageDialog } from '../image-dialog/image-dialog.component'
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-add-post',
@@ -10,19 +11,9 @@ import { ImageDialog } from '../image-dialog/image-dialog.component'
 	styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent implements OnInit {
-	imageSrc = 'https://firebasestorage.googleapis.com/v0/b/first-time-in.appspot.com/o/images%2Flion-conservators-center.jpg';
-
-	SaveButton = (context) => {
-		var ui = $.summernote.ui;
-		var button = ui.button({
-			contents: 'Save',
-			tooltip: 'Save',
-			click: () => {
-				this.addPost()
-			}
-		});
-		return button.render();
-	}
+	mainImage = 'https://firebasestorage.googleapis.com/v0/b/first-time-in.appspot.com/o/images%2Flion-conservators-center.jpg?alt=media';
+	title = 'Title';
+	showSummernote = false;
 
 	ImageButton = (context) => {
 		var ui = $.summernote.ui;
@@ -36,7 +27,7 @@ export class AddPostComponent implements OnInit {
 		return button.render();
 	}
 
-	constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
+	constructor(private firebaseService: FirebaseService, public dialog: MatDialog, private router: Router) { }
 
 	ngOnInit() {
 		$(document).ready(() => {
@@ -49,11 +40,9 @@ export class AddPostComponent implements OnInit {
 					['insert', ['picture', 'link', 'table', 'hr']],
 					['misc', ['fullscreen', 'codeview', 'help']],
 					['image', ['image']],
-					['save', ['save']],
 				],
 				buttons: {
 					image: this.ImageButton,
-					save: this.SaveButton,
 				}
 			});
 		});
@@ -62,11 +51,11 @@ export class AddPostComponent implements OnInit {
 	addPost() {
 		this.firebaseService.createPost({
 			text: $('#summernote').summernote('code'),
-			shortText: `test`,
-			color: 'lightblue',
-			image: this.imageSrc
+			shortText: this.title || 'No Title',
+			image: this.mainImage
 		})
 			.then(res => {
+				this.router.navigate(['/']);
 			});
 	}
 
@@ -79,5 +68,19 @@ export class AddPostComponent implements OnInit {
 				$("#summernote").summernote("code", text);
 			}
 		});
+	}
+
+	updateMainImage():void {
+		const dialogRef = this.dialog.open(ImageDialog, { width: '700px' });
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.mainImage = result;
+			}
+		});
+	}
+
+	toggleSummernote() {
+		this.showSummernote = !this.showSummernote;
 	}
 }
